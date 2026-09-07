@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>یه قرار عاشقانه ❤️</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- =========================
+         صفحه اول
+    ========================== -->
+
+    <section id="questionPage" class="page active">
+
+        <div class="card">
+
+            <div class="heart-big">❤️</div>
+
+            <h1>
+                یه سوال مهم ازت دارم...
+            </h1>
+
+            <p id="message">
+                امشب بریم بیرون؟ 🥰
+            </p>
+
+            <div class="buttons">
+
+                <button id="yesBtn" class="yes-btn">
+                    بله ❤️
+                </button>
+
+                <button id="noBtn" class="no-btn">
+                    خیر 😢
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         صفحه انتخاب تاریخ
+    ========================== -->
+
+    <section id="datePage" class="page">
+
+        <div class="card">
+
+            <div class="heart-big">
+                💕
+            </div>
+
+            <h1>
+                پس قرارمون قطعی شد 😍
+            </h1>
+
+            <p>
+                حالا یه تاریخ قشنگ برای قرارمون انتخاب کن ❤️
+            </p>
+
+
+            <!-- تقویم شمسی -->
+
+            <div class="persian-date-picker">
+
+                <button
+                    type="button"
+                    id="dateInput"
+                    class="date-input">
+
+                    📅 انتخاب تاریخ قرار
+
+                </button>
+
+
+                <div
+                    id="calendar"
+                    class="calendar">
+
+                    <div class="calendar-header">
+
+                        <button
+                            type="button"
+                            id="prevMonth">
+
+                            ‹
+
+                        </button>
+
+
+                        <h3 id="monthTitle">
+                            فروردین ۱۴۰۵
+                        </h3>
+
+
+                        <button
+                            type="button"
+                            id="nextMonth">
+
+                            ›
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- روزهای هفته -->
+
+                    <div class="weekdays">
+
+                        <span>ش</span>
+                        <span>ی</span>
+                        <span>د</span>
+                        <span>س</span>
+                        <span>چ</span>
+                        <span>پ</span>
+                        <span>ج</span>
+
+                    </div>
+
+
+                    <!-- روزهای ماه -->
+
+                    <div
+                        id="days"
+                        class="days">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- مقدار تاریخ انتخاب شده -->
+
+            <input
+                type="hidden"
+                id="selectedDate">
+
+
+            <!-- انتخاب ساعت -->
+
+            <div class="time-box">
+
+                <label for="timeInput">
+                    🕐 ساعت قرار
+                </label>
+
+                <input
+                    type="time"
+                    id="timeInput">
+
+            </div>
+
+
+            <!-- خطای انتخاب -->
+
+            <p
+                id="dateError"
+                class="error">
+            </p>
+
+
+            <!-- دکمه تأیید -->
+
+            <button
+                type="button"
+                id="confirmBtn"
+                class="confirm-btn">
+
+                💕 تأیید قرار
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         صفحه نهایی
+    ========================== -->
+
+    <section id="finalPage" class="page">
+
+        <div class="card final-card">
+
+            <div class="rose">
+                🌹
+            </div>
+
+            <h1>
+                قرارمون ثبت شد ❤️
+            </h1>
+
+            <p>
+                منتظر یه شب قشنگ با تو هستم...
+            </p>
+
+
+            <div class="date-result">
+
+                <div>
+                    📅
+                    <span id="finalDate">
+                    </span>
+                </div>
+
+                <div>
+                    🕐
+                    <span id="finalTime">
+                    </span>
+                </div>
+
+            </div>
+
+
+            <p class="love-text">
+                بعضی قرارها فقط یه قرار نیستن...
+                <br>
+                شروع یه خاطره‌ی قشنگن ❤️
+            </p>
+
+
+            <div class="love-sign">
+                تقدیم با عشق 🌹
+            </div>
+
+
+            <!-- کنترل موزیک -->
+
+            <button
+                type="button"
+                id="musicBtn"
+                class="music-btn">
+
+                🎵 پخش موزیک
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         موزیک
+    ========================== -->
+
+    <audio
+        id="music"
+        loop>
+
+        <source
+            src="{{ url_for('static', filename='music/love.mp3') }}"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- =========================
+         JavaScript
+    ========================== -->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
