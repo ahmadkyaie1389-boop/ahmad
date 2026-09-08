@@ -2,18 +2,21 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:tahoma, sans-serif;
+    font-family:Tahoma, sans-serif;
 }
 
 
 body{
 
     min-height:100vh;
+
     background:
-    radial-gradient(circle at top,#4b174d,#120016);
+    linear-gradient(135deg,#120014,#4b123f,#160018);
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     overflow:hidden;
@@ -27,77 +30,82 @@ body{
 .stars{
 
     position:fixed;
+
     width:100%;
+
     height:100%;
 
     background-image:
-    radial-gradient(white 1px,transparent 1px);
+    radial-gradient(#fff 1px, transparent 1px);
 
-    background-size:40px 40px;
+    background-size:35px 35px;
 
-    opacity:.3;
+    opacity:.25;
 
-    animation:
-    moveStars 20s linear infinite;
+    animation:starsMove 20s linear infinite;
 
 }
 
 
 
-@keyframes moveStars{
+@keyframes starsMove{
 
 from{
 transform:translateY(0);
 }
 
 to{
-transform:translateY(40px);
+transform:translateY(50px);
 }
 
 }
-
 
 
 
 .container{
 
     width:90%;
-    max-width:700px;
+
+    max-width:650px;
 
     text-align:center;
+
+    z-index:2;
 
 }
 
 
 
-.box{
+.card{
 
     background:
 
     rgba(255,255,255,.12);
 
-    backdrop-filter:blur(15px);
 
-    border:
-
-    1px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(20px);
 
 
-    border-radius:30px;
+    border-radius:35px;
 
-    padding:50px 30px;
+
+    padding:45px 25px;
 
 
     box-shadow:
 
-    0 0 40px rgba(255,0,120,.3);
+    0 0 50px rgba(255,0,120,.35);
 
 
-    animation:
+    border:
 
-    show .8s ease;
+    1px solid rgba(255,255,255,.25);
+
+
+    animation:show .8s ease;
 
 }
+
 
 
 
@@ -106,6 +114,7 @@ transform:translateY(40px);
 from{
 
 opacity:0;
+
 transform:scale(.7);
 
 }
@@ -113,6 +122,7 @@ transform:scale(.7);
 to{
 
 opacity:1;
+
 transform:scale(1);
 
 }
@@ -121,8 +131,7 @@ transform:scale(1);
 
 
 
-
-.hidden{
+.hide{
 
 display:none;
 
@@ -130,19 +139,19 @@ display:none;
 
 
 
-.heart{
 
-font-size:70px;
+.big-heart{
 
-animation:
+font-size:90px;
 
-heartbeat 1s infinite;
+animation:heartBeat 1s infinite;
 
 }
 
 
 
-@keyframes heartbeat{
+
+@keyframes heartBeat{
 
 50%{
 
@@ -156,11 +165,11 @@ transform:scale(1.2);
 
 h1{
 
-font-size:45px;
+font-size:38px;
+
+color:#ffd6ea;
 
 margin-bottom:25px;
-
-color:#ffd1e8;
 
 }
 
@@ -168,9 +177,9 @@ color:#ffd1e8;
 
 p{
 
-font-size:22px;
+font-size:21px;
 
-margin-bottom:35px;
+margin-bottom:30px;
 
 }
 
@@ -179,23 +188,27 @@ margin-bottom:35px;
 
 button{
 
-border:none;
-
-padding:15px 35px;
-
-border-radius:50px;
-
-font-size:22px;
-
-cursor:pointer;
-
-
 background:
 
-linear-gradient(45deg,#ff4f9a,#ff8acb);
+linear-gradient(45deg,#ff3f9f,#ff86c8);
+
+
+border:none;
 
 
 color:white;
+
+
+padding:15px 35px;
+
+
+border-radius:50px;
+
+
+font-size:20px;
+
+
+cursor:pointer;
 
 
 transition:.3s;
@@ -203,10 +216,11 @@ transition:.3s;
 
 box-shadow:
 
-0 0 20px #ff4f9a;
+0 0 25px #ff3f9f;
 
 
 }
+
 
 
 
@@ -215,6 +229,7 @@ button:hover{
 transform:scale(1.1);
 
 }
+
 
 
 
@@ -230,8 +245,7 @@ gap:30px;
 
 
 
-
-#no{
+#noBtn{
 
 background:#555;
 
@@ -242,29 +256,140 @@ position:relative;
 
 
 
-#yes{
+.calendar-wrapper{
 
-transform:scale(1);
+margin:20px 0;
 
 }
 
 
 
 
+.date-button{
 
-input{
+margin-bottom:20px;
 
-width:80%;
+}
+
+
+
+#selectedDate{
+
+background:rgba(255,255,255,.15);
 
 padding:15px;
 
-margin:10px;
-
 border-radius:20px;
+
+}
+
+
+
+.calendar{
+
+margin-top:20px;
+
+background:rgba(0,0,0,.25);
+
+border-radius:25px;
+
+padding:20px;
+
+animation:show .5s;
+
+}
+
+
+
+
+.calendar-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+
+
+.calendar-header button{
+
+padding:8px 15px;
+
+font-size:16px;
+
+}
+
+
+
+
+.days,
+.dates{
+
+display:grid;
+
+grid-template-columns:repeat(7,1fr);
+
+gap:8px;
+
+}
+
+
+
+.days div{
+
+font-weight:bold;
+
+color:#ffd1e8;
+
+}
+
+
+
+.dates div{
+
+padding:12px;
+
+border-radius:50%;
+
+cursor:pointer;
+
+background:rgba(255,255,255,.1);
+
+transition:.3s;
+
+}
+
+
+
+.dates div:hover{
+
+background:#ff4fa3;
+
+transform:scale(1.15);
+
+}
+
+
+
+
+select{
+
+padding:15px;
+
+width:80%;
 
 border:none;
 
+border-radius:25px;
+
 font-size:18px;
+
+margin:20px;
 
 text-align:center;
 
@@ -272,22 +397,17 @@ text-align:center;
 
 
 
-
-
 .rose{
 
-font-size:120px;
+font-size:130px;
 
-animation:
-
-floatRose 2s infinite;
+animation:roseMove 2s infinite;
 
 }
 
 
 
-@keyframes floatRose{
-
+@keyframes roseMove{
 
 50%{
 
@@ -299,17 +419,15 @@ transform:translateY(-20px);
 
 
 
-
-
 #petals span{
 
-position:absolute;
+position:fixed;
+
+top:-20px;
 
 font-size:25px;
 
-animation:
-
-fall 5s linear infinite;
+animation:fall 6s linear infinite;
 
 }
 
@@ -317,16 +435,9 @@ fall 5s linear infinite;
 
 @keyframes fall{
 
-from{
-
-transform:translateY(-100px);
-
-}
-
-
 to{
 
-transform:translateY(100vh) rotate(360deg);
+transform:translateY(110vh) rotate(360deg);
 
 }
 
@@ -340,7 +451,7 @@ transform:translateY(100vh) rotate(360deg);
 
 h1{
 
-font-size:32px;
+font-size:28px;
 
 }
 
@@ -352,16 +463,16 @@ font-size:18px;
 }
 
 
-button{
+.card{
 
-font-size:18px;
+padding:35px 15px;
 
 }
 
 
-.box{
+button{
 
-padding:35px 20px;
+font-size:17px;
 
 }
 
