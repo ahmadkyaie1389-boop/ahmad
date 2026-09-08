@@ -2,276 +2,157 @@
 <html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>یه قرار عاشقانه ❤️</title>
+<title>یک سوال مهم ❤️</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
+
 
 <body>
 
-    <!-- =========================
-         صفحه اول
-    ========================== -->
 
-    <section id="questionPage" class="page active">
+<div class="stars"></div>
 
-        <div class="card">
 
-            <div class="heart-big">❤️</div>
+<div class="container">
 
-            <h1>
-                یه سوال مهم ازت دارم...
-            </h1>
 
-            <p id="message">
-                امشب بریم بیرون؟ 🥰
-            </p>
+<div id="page1" class="box">
 
-            <div class="buttons">
+<div class="heart">
+❤️
+</div>
 
-                <button id="yesBtn" class="yes-btn">
-                    بله ❤️
-                </button>
 
-                <button id="noBtn" class="no-btn">
-                    خیر 😢
-                </button>
+<h1>
+یه سوال مهم ازت دارم...
+</h1>
 
-            </div>
 
-        </div>
+<p>
+آماده‌ای؟ 🥺
+</p>
 
-    </section>
 
+<button onclick="startQuestion()">
+شروع ❤️
+</button>
 
-    <!-- =========================
-         صفحه انتخاب تاریخ
-    ========================== -->
 
-    <section id="datePage" class="page">
+</div>
 
-        <div class="card">
 
-            <div class="heart-big">
-                💕
-            </div>
 
-            <h1>
-                پس قرارمون قطعی شد 😍
-            </h1>
+<div id="page2" class="box hidden">
 
-            <p>
-                حالا یه تاریخ قشنگ برای قرارمون انتخاب کن ❤️
-            </p>
 
+<h1>
+شب بریم بیرون؟ 🌙
+</h1>
 
-            <!-- تقویم شمسی -->
 
-            <div class="persian-date-picker">
+<p>
+یه قرار قشنگ باهم داشته باشیم؟
+</p>
 
-                <button
-                    type="button"
-                    id="dateInput"
-                    class="date-input">
 
-                    📅 انتخاب تاریخ قرار
+<div class="buttons">
 
-                </button>
+<button id="yes"
+onclick="yesClick()">
+❤️ بله
+</button>
 
 
-                <div
-                    id="calendar"
-                    class="calendar">
+<button id="no"
+onclick="noClick()">
+نه 😢
+</button>
 
-                    <div class="calendar-header">
 
-                        <button
-                            type="button"
-                            id="prevMonth">
+</div>
 
-                            ‹
 
-                        </button>
+</div>
 
 
-                        <h3 id="monthTitle">
-                            فروردین ۱۴۰۵
-                        </h3>
 
 
-                        <button
-                            type="button"
-                            id="nextMonth">
+<div id="page3" class="box hidden">
 
-                            ›
 
-                        </button>
+<h1>
+پس قرارمون قطعی شد ❤️
+</h1>
 
-                    </div>
 
+<p>
+تاریخ و ساعت رو انتخاب کن 🌹
+</p>
 
-                    <!-- روزهای هفته -->
 
-                    <div class="weekdays">
+<input 
+type="date"
+id="date">
 
-                        <span>ش</span>
-                        <span>ی</span>
-                        <span>د</span>
-                        <span>س</span>
-                        <span>چ</span>
-                        <span>پ</span>
-                        <span>ج</span>
 
-                    </div>
+<input
+type="time"
+id="time">
 
 
-                    <!-- روزهای ماه -->
+<button onclick="finalPage()">
+ادامه ❤️
+</button>
 
-                    <div
-                        id="days"
-                        class="days">
-                    </div>
 
-                </div>
+</div>
 
-            </div>
 
 
-            <!-- مقدار تاریخ انتخاب شده -->
 
-            <input
-                type="hidden"
-                id="selectedDate">
+<div id="page4" class="box hidden">
 
 
-            <!-- انتخاب ساعت -->
+<div class="rose">
+🌹
+</div>
 
-            <div class="time-box">
 
-                <label for="timeInput">
-                    🕐 ساعت قرار
-                </label>
+<h1>
+با عشق تقدیم به تو ❤️
+</h1>
 
-                <input
-                    type="time"
-                    id="timeInput">
 
-            </div>
+<p>
+منتظر یه شب فوق‌العاده باش...
+</p>
 
 
-            <!-- خطای انتخاب -->
+<div id="petals"></div>
 
-            <p
-                id="dateError"
-                class="error">
-            </p>
 
+</div>
 
-            <!-- دکمه تأیید -->
 
-            <button
-                type="button"
-                id="confirmBtn"
-                class="confirm-btn">
+</div>
 
-                💕 تأیید قرار
 
-            </button>
 
-        </div>
 
-    </section>
+<audio id="music" loop>
 
+<source src="{{ url_for('static', filename='music/love.mp3') }}">
 
-    <!-- =========================
-         صفحه نهایی
-    ========================== -->
+</audio>
 
-    <section id="finalPage" class="page">
 
-        <div class="card final-card">
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
-            <div class="rose">
-                🌹
-            </div>
-
-            <h1>
-                قرارمون ثبت شد ❤️
-            </h1>
-
-            <p>
-                منتظر یه شب قشنگ با تو هستم...
-            </p>
-
-
-            <div class="date-result">
-
-                <div>
-                    📅
-                    <span id="finalDate">
-                    </span>
-                </div>
-
-                <div>
-                    🕐
-                    <span id="finalTime">
-                    </span>
-                </div>
-
-            </div>
-
-
-            <p class="love-text">
-                بعضی قرارها فقط یه قرار نیستن...
-                <br>
-                شروع یه خاطره‌ی قشنگن ❤️
-            </p>
-
-
-            <div class="love-sign">
-                تقدیم با عشق 🌹
-            </div>
-
-
-            <!-- کنترل موزیک -->
-
-            <button
-                type="button"
-                id="musicBtn"
-                class="music-btn">
-
-                🎵 پخش موزیک
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         موزیک
-    ========================== -->
-
-    <audio
-        id="music"
-        loop>
-
-        <source
-            src="{{ url_for('static', filename='music/love.mp3') }}"
-            type="audio/mpeg">
-
-    </audio>
-
-
-    <!-- =========================
-         JavaScript
-    ========================== -->
-
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 
