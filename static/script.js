@@ -1,13 +1,16 @@
-let yesSize = 1;
+// =======================
+// تغییر صفحات
+// =======================
+
+function openQuestion(){
+
+    document.getElementById("start")
+    .classList.add("hide");
 
 
-// شروع سوال
+    document.getElementById("question")
+    .classList.remove("hide");
 
-function startQuestion(){
-
-    document.getElementById("page1").classList.add("hidden");
-
-    document.getElementById("page2").classList.remove("hidden");
 
     playMusic();
 
@@ -15,106 +18,78 @@ function startQuestion(){
 
 
 
-// دکمه بله
+// =======================
+// دکمه ها
+// =======================
 
-function yesClick(){
+let yesScale = 1;
 
 
-    document.getElementById("page2").classList.add("hidden");
+function yesAnswer(){
 
 
-    document.getElementById("page3").classList.remove("hidden");
+    document.getElementById("question")
+    .classList.add("hide");
+
+
+    document.getElementById("datePage")
+    .classList.remove("hide");
 
 
 }
 
 
 
-// دکمه نه
 
-function noClick(){
-
-
-    let no = document.getElementById("no");
+function noAnswer(){
 
 
-    let x = Math.random()*250 - 125;
+    let btn =
+    document.getElementById("noBtn");
 
-    let y = Math.random()*150 - 75;
+
+    let x =
+    Math.random()*250-125;
 
 
-    no.style.transform =
+    let y =
+    Math.random()*150-75;
+
+
+
+    btn.style.transform =
     `translate(${x}px,${y}px)`;
 
 
-    let yes =
-    document.getElementById("yes");
+
+    yesScale += 0.15;
 
 
-    yesSize += 0.15;
-
-
-    yes.style.transform =
-    `scale(${yesSize})`;
+    document.getElementById("yesBtn")
+    .style.transform =
+    `scale(${yesScale})`;
 
 }
 
 
 
-// صفحه آخر
-
-function finalPage(){
-
-
-    let date =
-    document.getElementById("date").value;
-
-
-    let time =
-    document.getElementById("time").value;
-
-
-
-    if(date=="" || time==""){
-
-
-        alert("اول تاریخ و ساعت قرار رو انتخاب کن ❤️");
-
-        return;
-
-    }
-
-
-
-    document.getElementById("page3").classList.add("hidden");
-
-
-    document.getElementById("page4").classList.remove("hidden");
-
-
-    createPetals();
-
-
-
-}
-
-
-
-
+// =======================
 // موزیک
+// =======================
+
 
 function playMusic(){
 
 
-    let music =
-    document.getElementById("music");
+let music =
+document.getElementById("music");
 
 
-    music.volume = 0.4;
+music.volume=.35;
 
 
-    music.play()
-    .catch(()=>{});
+music.play()
+.catch(()=>{});
 
 
 }
@@ -122,38 +97,225 @@ function playMusic(){
 
 
 
-// ساخت گلبرگ
+
+// =======================
+// تقویم شمسی
+// =======================
+
+
+const months=[
+
+"فروردین",
+"اردیبهشت",
+"خرداد",
+"تیر",
+"مرداد",
+"شهریور",
+"مهر",
+"آبان",
+"آذر",
+"دی",
+"بهمن",
+"اسفند"
+
+];
+
+
+
+let currentMonth=0;
+
+
+let selectedDay=null;
+
+
+
+function showCalendar(){
+
+
+document
+.getElementById("calendar")
+.classList.remove("hide");
+
+
+renderCalendar();
+
+
+}
+
+
+
+
+
+function renderCalendar(){
+
+
+let box =
+document.getElementById("dates");
+
+
+box.innerHTML="";
+
+
+
+document.getElementById("monthTitle")
+.innerHTML =
+months[currentMonth]+" ۱۴۰۵";
+
+
+
+let days = 31;
+
+
+
+if(currentMonth==11)
+days=29;
+
+
+
+for(let i=1;i<=days;i++){
+
+
+let day =
+document.createElement("div");
+
+
+day.innerHTML=i;
+
+
+
+day.onclick=function(){
+
+
+selectedDay=i;
+
+
+document.getElementById("selectedDate")
+.innerHTML =
+
+i+" "+months[currentMonth]+" ۱۴۰۵ ❤️";
+
+
+};
+
+
+
+box.appendChild(day);
+
+
+
+}
+
+
+
+}
+
+
+
+
+function changeMonth(value){
+
+
+currentMonth += value;
+
+
+
+if(currentMonth<0)
+currentMonth=11;
+
+
+if(currentMonth>11)
+currentMonth=0;
+
+
+
+renderCalendar();
+
+
+
+}
+
+
+
+
+
+// =======================
+// صفحه آخر
+// =======================
+
+
+function finishDate(){
+
+
+
+if(selectedDay==null){
+
+
+alert("اول تاریخ رو انتخاب کن ❤️");
+
+
+return;
+
+}
+
+
+
+document.getElementById("datePage")
+.classList.add("hide");
+
+
+
+document.getElementById("final")
+.classList.remove("hide");
+
+
+
+createPetals();
+
+
+
+}
+
+
+
+
+// =======================
+// گلبرگ رز
+// =======================
+
 
 function createPetals(){
 
 
-    let box =
-    document.getElementById("petals");
+let box =
+document.getElementById("petals");
 
 
 
-    for(let i=0;i<40;i++){
+for(let i=0;i<40;i++){
 
 
-        let petal =
-        document.createElement("span");
+let petal =
+document.createElement("span");
 
 
-        petal.innerHTML="🌹";
+petal.innerHTML="🌹";
 
 
-        petal.style.left =
-        Math.random()*100+"%";
+petal.style.left =
+Math.random()*100+"%";
 
 
-        petal.style.animationDelay =
-        Math.random()*5+"s";
+
+petal.style.animationDelay =
+Math.random()*5+"s";
 
 
-        box.appendChild(petal);
+
+box.appendChild(petal);
 
 
-    }
+
+}
 
 
 }
