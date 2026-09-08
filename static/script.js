@@ -1,7 +1,74 @@
 // =======================
 // تغییر صفحات
 // =======================
+function openEnvelope(){
 
+
+let env =
+document.querySelector(".envelope");
+
+
+env.classList.add("open");
+
+
+
+document.getElementById("hint")
+.innerHTML=
+"نامه باز شد ❤️";
+
+
+
+setTimeout(()=>{
+
+
+document.getElementById("startBtn")
+.classList.remove("hide");
+
+
+},1200);
+
+
+
+createHearts();
+
+
+}
+
+
+
+
+
+function createHearts(){
+
+
+for(let i=0;i<20;i++){
+
+
+let heart =
+document.createElement("div");
+
+
+heart.className="heart-float";
+
+heart.innerHTML="❤️";
+
+
+heart.style.left =
+Math.random()*100+"%";
+
+
+heart.style.animationDelay =
+Math.random()*5+"s";
+
+
+document.body.appendChild(heart);
+
+
+}
+
+
+
+}
 function openQuestion(){
 
     document.getElementById("start")
