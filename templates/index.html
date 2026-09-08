@@ -2,10 +2,12 @@
 <html lang="fa" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>یک سوال مهم ❤️</title>
+<title>یک قرار عاشقانه ❤️</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
@@ -21,55 +23,59 @@
 <div class="container">
 
 
-<div id="page1" class="box">
+<!-- صفحه شروع -->
 
-<div class="heart">
+<section id="start" class="card">
+
+<div class="big-heart">
 ❤️
 </div>
 
 
 <h1>
-یه سوال مهم ازت دارم...
+یک پیام مخصوص برای تو...
 </h1>
 
 
 <p>
-آماده‌ای؟ 🥺
+آماده‌ای؟ 🌙
 </p>
 
 
-<button onclick="startQuestion()">
-شروع ❤️
+<button onclick="openQuestion()">
+باز کن 💌
 </button>
 
 
-</div>
+</section>
 
 
 
-<div id="page2" class="box hidden">
+
+<!-- سوال -->
+
+<section id="question" class="card hide">
 
 
 <h1>
-شب بریم بیرون؟ 🌙
+شب بریم بیرون؟ 🌹
 </h1>
 
 
 <p>
-یه قرار قشنگ باهم داشته باشیم؟
+یه شب قشنگ کنار هم داشته باشیم؟
 </p>
 
 
 <div class="buttons">
 
-<button id="yes"
-onclick="yesClick()">
+
+<button id="yesBtn" onclick="yesAnswer()">
 ❤️ بله
 </button>
 
 
-<button id="no"
-onclick="noClick()">
+<button id="noBtn" onclick="noAnswer()">
 نه 😢
 </button>
 
@@ -77,36 +83,55 @@ onclick="noClick()">
 </div>
 
 
-</div>
+</section>
 
 
 
 
-<div id="page3" class="box hidden">
+
+<!-- انتخاب قرار -->
+
+<section id="datePage" class="card hide">
 
 
 <h1>
-پس قرارمون قطعی شد ❤️
+قرارمون رو انتخاب کن ❤️
 </h1>
 
 
-<p>
-تاریخ و ساعت رو انتخاب کن 🌹
-</p>
+
+<div class="calendar-wrapper">
 
 
-<input 
-type="date"
-id="date">
+<button class="date-button" onclick="showCalendar()">
+
+📅 انتخاب تاریخ
+
+</button>
 
 
-<input
-type="time"
-id="time">
+<div id="selectedDate">
+هنوز انتخاب نشده
+</div>
 
 
-<button onclick="finalPage()">
-ادامه ❤️
+<div id="calendar" class="calendar hide">
+
+<div class="calendar-header">
+
+
+<button onclick="changeMonth(-1)">
+◀
+</button>
+
+
+<h2 id="monthTitle">
+فروردین ۱۴۰۵
+</h2>
+
+
+<button onclick="changeMonth(1)">
+▶
 </button>
 
 
@@ -114,8 +139,82 @@ id="time">
 
 
 
+<div class="days">
 
-<div id="page4" class="box hidden">
+<div>ش</div>
+<div>ی</div>
+<div>د</div>
+<div>س</div>
+<div>چ</div>
+<div>پ</div>
+<div>ج</div>
+
+</div>
+
+
+
+<div id="dates" class="dates"></div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<h2>
+⏰ ساعت قرار
+</h2>
+
+
+<select id="time">
+
+<option>
+18:00
+</option>
+
+<option>
+19:00
+</option>
+
+<option>
+20:00
+</option>
+
+<option>
+21:00
+</option>
+
+<option>
+22:00
+</option>
+
+
+</select>
+
+
+
+<button onclick="finishDate()">
+ادامه ❤️
+</button>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- صفحه آخر -->
+
+
+<section id="final" class="card hide">
 
 
 <div class="rose">
@@ -124,22 +223,27 @@ id="time">
 
 
 <h1>
-با عشق تقدیم به تو ❤️
+قرارمون قطعی شد ❤️
 </h1>
 
 
-<p>
-منتظر یه شب فوق‌العاده باش...
+<p id="finalText">
+
+با عشق منتظرت هستم...
+
 </p>
 
 
 <div id="petals"></div>
 
 
+</section>
+
+
+
 </div>
 
 
-</div>
 
 
 
@@ -149,6 +253,8 @@ id="time">
 <source src="{{ url_for('static', filename='music/love.mp3') }}">
 
 </audio>
+
+
 
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
